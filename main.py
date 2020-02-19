@@ -1,11 +1,11 @@
 import random
 import string
-import time
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-#Randomly changes the case of a word
+
+# Randomly changes the case of a word
 def change_case(word, rand_number=random.randint(0, 2)):
     if rand_number == 0:
         return word.upper()
@@ -31,15 +31,16 @@ def generate_email():
 def generate_password():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=random.randint(5, 25)))
 
+
 if __name__ == "__main__":
-    #Setup web driver
+    # Setup web driver
     driver = webdriver.Chrome("chromedriver.exe", options=webdriver.ChromeOptions())
 
-    #Start main loop
+    # Start main loop
     while True:
         try:
             driver.get("WEBSITE HERE")
-            
+
             # Structure for generic login wall
             email = driver.find_element_by_xpath('EMAIL/USERNAME ELEMENT XPATH')
             email.send_keys(generate_email())
@@ -50,9 +51,10 @@ if __name__ == "__main__":
             login = driver.find_element_by_xpath('LOGIN BUTTON ELEMENT XPATH')
             login.click()
         # Allow the user to exit the program by using using Control-C 
-        except (KeyboardInterrupt, SystemExit): 
+        except (KeyboardInterrupt, SystemExit):
             print("Exiting program...")
             exit()
+
         # Preventing timeouts
         except:
             pass
