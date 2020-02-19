@@ -43,25 +43,28 @@ def generate_email():
 def generate_password():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=random.randint(5, 25)))
 
-# Setup web driver
-options = webdriver.ChromeOptions()
-driver = webdriver.Chrome("chromedriver.exe", options=options)
+if __name__ == "__main__":
+    #Setup web driver
+    driver = webdriver.Chrome("chromedriver.exe", options=webdriver.ChromeOptions())
 
-# Code below for flooding their database
-while True:
-    try:
-        driver.get("WEBSITE HERE")
-        
-        # Structure for generic login wall
+    #Start main loop
+    while True:
+        try:
+            driver.get("WEBSITE HERE")
+            
+            # Structure for generic login wall
+            email = driver.find_element_by_xpath('EMAIL/USERNAME ELEMENT XPATH')
+            email.send_keys(generate_email())
 
-        email = driver.find_element_by_xpath('EMAIL/USERNAME ELEMENT XPATH')
-        email.send_keys(generate_email())
+            password = driver.find_element_by_xpath('PASSWORD ELEMENT XPATH')
+            password.send_keys(generate_password())
 
-        password = driver.find_element_by_xpath('PASSWORD ELEMENT XPATH')
-        password.send_keys(generate_password())
-
-        login = driver.find_element_by_xpath('LOGIN BUTTON ELEMENT XPATH')
-        login.click()
-
-except: # Preventing timeouts
-        pass
+            login = driver.find_element_by_xpath('LOGIN BUTTON ELEMENT XPATH')
+            login.click()
+        # Allow the user to exit the program by using using Control-C 
+        except (KeyboardInterrupt, SystemExit): 
+            print("Exiting program...")
+            exit()
+        # Preventing timeouts
+        except:
+            pass
