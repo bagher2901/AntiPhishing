@@ -6,11 +6,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
-# Setup web driver
-# options = webdriver.ChromeOptions()
-# driver = webdriver.Chrome("chromedriver.exe", options=options)
-
-
 def generate_email(option=random.randint(0, 2)):
     # Opens the file, chooses a random line then strips any new lines at the end
     firstname = random.choice(open('firstnames.txt').readlines()).rstrip()
