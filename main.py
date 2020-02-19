@@ -6,38 +6,35 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
-def generate_email():
-    file = open("firstnames.txt", "r")
-    firstname = file.read().splitlines()
-    firstname = firstname[random.randint(0, len(firstname) - 1)]
-    option = random.randint(0, 2)
-    if option == 0:
-        firstname = firstname.upper()
-    elif option == 1:
-        firstname = firstname.lower()
-    else:
-        firstname = firstname.title()
+# Setup web driver
+# options = webdriver.ChromeOptions()
+# driver = webdriver.Chrome("chromedriver.exe", options=options)
 
-    file = open("lastnames.txt", "r")
-    lastname = file.read().splitlines()
-    lastname = lastname[random.randint(0, len(lastname) - 1)]
-    option = random.randint(0, 2)
-    if option == 0:
-        lastname = lastname.upper()
-    elif option == 1:
-        lastname = lastname.lower()
-    else:
-        lastname = lastname.title()
 
-    domains = ["@gmail.com", "@hotmail.co.uk", "@outlook.com", "@aol.com", "@mail.com"]
+def generate_email(option=random.randint(0, 2)):
+    # Opens the file, chooses a random line then strips any new lines at the end
+    firstname = random.choice(open('firstnames.txt').readlines()).rstrip()
+    lastname = random.choice(open('lastnames.txt').readlines()).rstrip()
+    domain = random.choice(open('domains.txt').readlines()).rstrip()
+    
+    # Generate a random number to include in the email
     number = str(random.randint(0, 500))
 
-    finalCombo = {0: firstname + number + lastname,
-                  1: lastname + number + firstname,
-                  2: firstname + lastname + number,
-                  3: lastname + firstname + number}
+    # Choose the case for the username based on the option parameter
+    if option == 0:
+        firstname = firstname.upper()
+        lastname = lastname.upper()
+    elif option == 1:
+        firstname = firstname.lower()
+        lastname = lastname.lower()
+    else:
+        firstname = firstname.title()
+        lastname = lastname.title()
 
-    return finalCombo[random.randint(0, 3)] + domains[random.randint(0, len(domains)-1)]
+    # Join the username, shuffle it randomly and then return it with the domain appended
+    username = [firstname, lastname, number]
+    random.shuffle(username)
+    return ''.join(username) + domain
 
 
 def generate_password():
@@ -63,5 +60,5 @@ while True:
         login = driver.find_element_by_xpath('LOGIN BUTTON ELEMENT XPATH')
         login.click()
 
-except: # Preventing timeouts
+    except: # Preventing timeouts
         pass
