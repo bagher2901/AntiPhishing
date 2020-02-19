@@ -5,39 +5,27 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+#Randomly changes the case of a word
+def change_case(word, rand_number=random.randint(0, 2)):
+    if rand_number == 0:
+        return word.upper()
+    elif rand_number == 1:
+        return word.lower()
+    else:
+        return word.title()
+
 
 def generate_email():
-    file = open("firstnames.txt", "r")
-    firstname = file.read().splitlines()
-    firstname = firstname[random.randint(0, len(firstname) - 1)]
-    option = random.randint(0, 2)
-    if option == 0:
-        firstname = firstname.upper()
-    elif option == 1:
-        firstname = firstname.lower()
-    else:
-        firstname = firstname.title()
+    # Opens the file, chooses a random line then strips any new lines at the end
+    firstname = random.choice(open('firstnames.txt').readlines()).rstrip()
+    lastname = random.choice(open('lastnames.txt').readlines()).rstrip()
+    domain = random.choice(open('domains.txt').readlines()).rstrip()
 
-    file = open("lastnames.txt", "r")
-    lastname = file.read().splitlines()
-    lastname = lastname[random.randint(0, len(lastname) - 1)]
-    option = random.randint(0, 2)
-    if option == 0:
-        lastname = lastname.upper()
-    elif option == 1:
-        lastname = lastname.lower()
-    else:
-        lastname = lastname.title()
-
-    domains = ["@gmail.com", "@hotmail.co.uk", "@outlook.com", "@aol.com", "@mail.com"]
-    number = str(random.randint(0, 500))
-
-    finalCombo = {0: firstname + number + lastname,
-                  1: lastname + number + firstname,
-                  2: firstname + lastname + number,
-                  3: lastname + firstname + number}
-
-    return finalCombo[random.randint(0, 3)] + domains[random.randint(0, len(domains)-1)]
+    # Change the case of the names, add a random number,
+    # randomly shuffle the order and finally return it with the domain appended
+    username = [change_case(firstname), change_case(lastname), str(random.randint(0, 500))]
+    random.shuffle(username)
+    return ''.join(username) + domain
 
 
 def generate_password():
