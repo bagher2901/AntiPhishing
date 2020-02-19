@@ -64,7 +64,7 @@ if __name__ == "__main__":
         # Allow the user to exit the program by using using Control-C 
         except (KeyboardInterrupt, SystemExit): 
             print("Exiting program...")
-            raise
+            exit()
         # Preventing timeouts
         except:
             pass
