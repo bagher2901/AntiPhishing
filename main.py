@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 #Randomly changes the case of a word
-def change_case(word, rand_number=random.randint(0, 2):
+def change_case(word, rand_number=random.randint(0, 2)):
     if rand_number == 0:
         return word.upper()
     elif rand_number == 1:
