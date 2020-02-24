@@ -15,7 +15,7 @@ Returns a randomised string of characters and numbers
 *returns string*
 
 ## Setup
-If you want to set this up for a certain email you'll first need to install Selenium.
+If you want to set this up you'll first need to install Selenium.
 Run the following command in terminal to install the package API:
 
 `pip install selenium`
@@ -23,7 +23,7 @@ Run the following command in terminal to install the package API:
 
 Open up main.py within your editor and locate the line:
 `driver.get("WEBSITE HERE")`
-You'll want to find a website that you know is a phishing website. https://www.phishtank.com/ has listings for known Phishing websites and is updated daily.
+You'll want to find a website that you know is a phishing website so I'd recommend looking at verified listings on https://www.phishtank.com/ . It has listings for known Phishing websites and is updated daily.
 
 The following will be for a generic login wall.
 
