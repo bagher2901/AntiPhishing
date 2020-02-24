@@ -40,7 +40,7 @@ if __name__ == "__main__":
     while True:
         try:
             driver.get("WEBSITE HERE")
-            # Test
+
             # Structure for generic login wall
             email = driver.find_element_by_xpath('EMAIL/USERNAME ELEMENT XPATH')
             email.send_keys(generate_email())
