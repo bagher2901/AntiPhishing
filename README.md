@@ -7,8 +7,7 @@
 Returns a randomised email using firstnames.txt, lastnames.txt and domains.txt
 
 *returns string*
-
-
+#
 `generate_password()`
 
 Returns a randomised string of characters and numbers
