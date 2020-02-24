@@ -3,17 +3,24 @@
  
 ## Functions
 `generate_email()`
+
 Returns a randomised email using firstnames.txt, lastnames.txt and domains.txt
+
 *returns string*
 
+
 `generate_password()`
+
 Returns a randomised string of characters and numbers
+
 *returns string*
 
 ## Setup
 If you want to set this up for a certain email you'll first need to install Selenium.
 Run the following command in terminal to install the package API:
+
 `pip install selenium`
+
 
 Open up main.py within your editor and locate the line:
 `driver.get("WEBSITE HERE")`
