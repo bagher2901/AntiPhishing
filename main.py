@@ -3,6 +3,7 @@ import string
 
 from selenium import webdriver
 
+
 # Randomly changes the case of a word
 def change_case(word, rand_number=random.randint(0, 2)):
     if rand_number == 0:
