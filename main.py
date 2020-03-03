@@ -2,8 +2,6 @@ import random
 import string
 
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-
 
 # Randomly changes the case of a word
 def change_case(word, rand_number=random.randint(0, 2)):
@@ -28,8 +26,14 @@ def generate_email():
     return ''.join(username) + domain
 
 
-def generate_password():
-    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=random.randint(5, 25)))
+def generate_password(bottom, top):
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=random.randint(bottom, top)))
+
+
+def generate_fullname():
+    firstname = random.choice(open('firstnames.txt').readlines()).rstrip()
+    lastname = random.choice(open('lastnames.txt').readlines()).rstrip()
+    return firstname + " " + lastname
 
 
 if __name__ == "__main__":
@@ -42,14 +46,15 @@ if __name__ == "__main__":
             driver.get("WEBSITE HERE")
 
             # Structure for generic login wall
-            email = driver.find_element_by_xpath('EMAIL/USERNAME ELEMENT XPATH')
+            email = driver.find_element_by_xpath('EMAIL EXPATH HERE')
             email.send_keys(generate_email())
 
-            password = driver.find_element_by_xpath('PASSWORD ELEMENT XPATH')
-            password.send_keys(generate_password())
+            password = driver.find_element_by_xpath('PASSWORD XPATH HERE')
+            password.send_keys(generate_password(10, 25))
 
-            login = driver.find_element_by_xpath('LOGIN BUTTON ELEMENT XPATH')
+            login = driver.find_element_by_xpath('LOGIN XPATH HERE')
             login.click()
+
         # Allow the user to exit the program by using using Control-C 
         except (KeyboardInterrupt, SystemExit):
             print("Exiting program...")
