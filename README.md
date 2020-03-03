@@ -15,6 +15,13 @@ Returns a randomised string of characters and numbers
 
 *returns string*
 
+
+`generate_fullname()`
+
+Returns a randomised firstname and using firstnames.txt and lastnames.txt
+
+*returns string*
+
 ## Setup
 If you want to set this up for a certain email you'll first need to install Selenium.
 Run the following command in terminal to install the package API:
