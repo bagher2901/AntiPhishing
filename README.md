@@ -3,17 +3,23 @@
  
 ## Functions
 `generate_email()`
+
 Returns a randomised email using firstnames.txt, lastnames.txt and domains.txt
+
 *returns string*
 <br/><br/>
 
 `generate_password()`
+
 Returns a randomised string of characters and numbers
+
 *returns string*
 <br/><br/>
 
 `generate_fullname()`
+
 Returns a randomised firstname and using firstnames.txt and lastnames.txt
+
 *returns string*
 <br/><br/>
 
