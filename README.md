@@ -18,7 +18,7 @@ Returns a randomised string of characters and numbers
 
 `generate_fullname()`
 
-Returns a randomised firstname and using firstnames.txt and lastnames.txt
+Returns a randomised name using firstnames.txt and lastnames.txt
 
 *returns string*
 <br/><br/>
