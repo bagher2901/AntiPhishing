@@ -24,7 +24,7 @@ Returns a randomised name using firstnames.txt and lastnames.txt
 <br/><br/>
 
 ## Setup
-If you want to set this up for a certain email you'll first need to install Selenium.
+If you want to set this up for a certain website you'll first need to install Selenium.
 Run the following command in terminal to install the package API:
 
 `pip install selenium`
